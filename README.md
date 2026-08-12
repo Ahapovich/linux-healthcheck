@@ -6,12 +6,13 @@ The script monitors the status of nginx, sshd, and docker, gathers root disk and
 Features
 Interactive Startup
 Before initiating diagnostics, the script prompts for user confirmation:
-
-Plaintext
+---------------------------------------------------------------------------
 Hello, this script will run a health check on your Linux operating system. Would you like to continue?(y/n):
+---------------------------------------------------------------------------
 The script gracefully exits if the user declines.
 
 Optional Telegram Notifications
+
 Users can optionally send the diagnostic output directly to a Telegram chat. When enabled, the script prompts for:
 
 Telegram Chat ID
@@ -36,10 +37,9 @@ Tracks counts of active vs. failed services.
 Formats array lists for active and failed services.
 
 Handles fallback text (No active services / No failed services) when lists are empty.
-
+---------------------------------------------------------------------------
 Example Terminal Output:
-
-Plaintext
+---------------------------------------------------------------------------
 ======SERVICE=HEALTH======
 
 ☑ nginx OK
@@ -56,10 +56,9 @@ Inspects the root (/) filesystem to compute:
 Total storage capacity (in GB).
 
 Current capacity utilization percentage.
-
+---------------------------------------------------------------------------
 Example Terminal Output:
-
-Plaintext
+---------------------------------------------------------------------------
 Total disk storage is 50 GB
 The hard drive is 30% full.
 RAM Usage
@@ -68,10 +67,9 @@ Calculates memory metrics using free:
 Total installed system memory (in GB).
 
 Current memory usage percentage.
-
+---------------------------------------------------------------------------
 Example Terminal Output:
 
-Plaintext
 RAM: 8 GB
 RAM is 17% full
 
@@ -84,8 +82,7 @@ Entry format: [YYYY-MM-DD HH:MM:SS] Status: <Report Output>
 
 Sample Output & Report
 The final report combines service statuses, storage information, and memory metrics:
-
-Plaintext
+---------------------------------------------------------------------------
 Working services: nginx sshd
 Failed services: docker
 
@@ -93,7 +90,7 @@ Storage info:
 Total hard disk storage is: 50 GB | The hard drive is 30% full
 Total RAM storage is: 8 GB | RAM is 17% full
 The exact same text block is pushed to your specified Telegram chat when Telegram features are active.
-
+---------------------------------------------------------------------------
 Requirements
 OS: Linux distribution with systemd (Debian, Ubuntu, RHEL, CentOS, Fedora, Arch, etc.)
 
@@ -102,7 +99,7 @@ Shell: Bash
 Core Utilities: systemctl, df, free, awk, sed, tr, curl
 
 Note: Elevated privileges (sudo or root) may be required to query certain service states depending on your system's security settings.
-
+---------------------------------------------------------------------------
 Quick Start
 1. Clone the repository
 Bash
@@ -114,8 +111,9 @@ chmod +x healthcheck.sh
 3. Execute the script
 Bash
 ./healthcheck.sh
-📲 Telegram Setup
-Telegram integration requires your own personal bot.
+---------------------------------------------------------------------------
+Telegram Setup
+Telegram integration requires your own personal bot!
 
 Step 1 — Create Your Bot
 Open Telegram and search for @BotFather.
@@ -133,22 +131,21 @@ Find your personal Chat ID by starting a conversation with @userinfobot or @raw_
 
 Step 3 — Run with Telegram Enabled
 When prompted during execution:
-
-Plaintext
+---------------------------------------------------------------------------
 Did you want take results by telegram? y/n?
 Type y, then input your Chat ID and Bot Token.
 
-Project Structure
-Plaintext
-linux-healthcheck/
-├── healthcheck.sh
-├── README.md
-└── .gitignore
-Recommended .gitignore to prevent committing logs or environment secrets:
+Project Structure:
 
-Фрагмент кода
+linux-healthcheck/
+->  healthcheck.sh
+->  README.md
+-> .gitignore
+
+Recommended .gitignore to prevent committing logs or environment secrets:
 *.log
 .env
+---------------------------------------------------------------------------
 What I Practiced With This Project
 This project served as hands-on practice for Bash scripting and Linux system administration concepts:
 
@@ -174,6 +171,6 @@ HTTP endpoint probing with curl.
 Quiet mode for running via cron jobs.
 
 Non-interactive flag parsing using getopts.
-
+---------------------------------------------------------------------------
 License
 Provided for educational and personal utility use.
